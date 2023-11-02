@@ -32,9 +32,12 @@ Column {data-width=650}
 instacart |> 
   count(product_name)|>
   mutate(product_name = fct_reorder(product_name, n)) |> 
-  plot_ly(x = ~product_name, y = ~n, color = ~product_name, type = "bar", colors = "viridis")
+  plot_ly(x = ~product_name, y = ~n, color = ~product_name, type = "bar", colors = "viridis")|>
+  layout(title = "Lactose Free Product Purchases",
+         xaxis = list(title = "Product Name"),
+         yaxis = list (title = "Count"))
 ```
-
+ 
 Column {data-width=350}
 -----------------------------------------------------------------------
 
@@ -43,7 +46,10 @@ Column {data-width=350}
 ```{r}
 instacart |> 
   count(order_hour_of_day)|>
-  plot_ly(x = ~order_hour_of_day, y = ~n, color = ~order_hour_of_day,type = 'scatter', mode = 'lines', colors = "viridis")
+  plot_ly(x = ~order_hour_of_day, y = ~n, color = ~order_hour_of_day,type = 'scatter', mode = 'lines', colors = "viridis")|>
+  layout(title = "Lactose Free Product Purchase Hour During the dat",
+         xaxis = list(title = "Hour of the day"),
+         yaxis = list (title = "Count"))
 ```
 
 ### Chart C
@@ -51,6 +57,9 @@ instacart |>
 ```{r}
 instacart |> 
   count(order_dow)|>
-  plot_ly(labels = ~order_dow, values = ~n, type = 'pie')
+  plot_ly(labels = ~order_dow, values = ~n, type = 'pie') |>
+  layout(title = 'Purchase during the Week',
+         xaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE),
+         yaxis = list(showgrid = FALSE, zeroline = FALSE, showticklabels = FALSE))
 ```
 
