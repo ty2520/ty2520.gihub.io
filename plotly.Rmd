@@ -15,10 +15,11 @@ library(plotly)
 ```
 ```{r}
 data("instacart")
-## kept only soy lactosefree products
+## kept only soy lactosefree products that were reordered
 instacart = instacart |>
   filter(
-    aisle_id %in%c(91)
+    aisle_id %in%c(91),
+    reordered == 1
   )
 
 ```
@@ -30,3 +31,18 @@ instacart |>
   plot_ly(x = ~product_name, y = ~n, color = ~product_name, type = "bar", colors = "viridis")
 ```
 
+The most purchased lactose free product is Organic unsweetened almond milk
+```{r}
+instacart |> 
+  count(order_hour_of_day)|>
+  plot_ly(x = ~order_hour_of_day, y = ~n, color = ~order_hour_of_day,type = 'scatter', mode = 'lines', colors = "viridis")
+```
+
+Poeple tend to reorder lactose free product in the middle of the day.
+```{r}
+instacart |> 
+  count(order_dow)|>
+  plot_ly(labels = ~order_dow, values = ~n, type = 'pie')
+```
+
+Monday has most reordered lactose free product.
