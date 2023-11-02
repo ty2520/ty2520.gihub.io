@@ -11,3 +11,6 @@ output:
 
 ## Resume
 [Tongxi's Resume](about.html)
+
+## Dashboard
+[Instacart Data Visualization](dashboard.html)
