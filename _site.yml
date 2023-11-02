@@ -5,6 +5,8 @@ navbar:
   right:
     - text: "About"
       href: about.html
+    - text: "Plotly"
+      href: plotly.html
     - icon: fa-envelope fa-lg
       href: mailto:<ty2520@outlook.com>
     - icon: fa-github fa-lg

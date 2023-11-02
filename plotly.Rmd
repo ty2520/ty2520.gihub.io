@@ -1,0 +1,32 @@
+---
+title: "Plotly"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+# Plotly
+
+```{r}
+library(p8105.datasets)
+library(tidyverse)
+library(plotly)
+```
+```{r}
+data("instacart")
+## kept only soy lactosefree products
+instacart = instacart |>
+  filter(
+    aisle_id %in%c(91)
+  )
+
+```
+
+```{r}
+instacart |> 
+  count(product_name)|>
+  mutate(product_name = fct_reorder(product_name, n)) |> 
+  plot_ly(x = ~product_name, y = ~n, color = ~product_name, type = "bar", colors = "viridis")
+```
+
